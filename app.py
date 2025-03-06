@@ -4,12 +4,12 @@ import db_config
 app = Flask(__name__)
 app.secret_key = "secretkey"  # For session handling
 
-# 📌 Render Login & Registration Page
+# Render Login & Registration Page
 @app.route('/')
 def login():
     return render_template('login.html')
 
-# 📌 Handle Registration
+# Handle Registration
 @app.route('/register', methods=['POST'])
 def register():
     name = request.form['name']
@@ -31,7 +31,7 @@ def register():
 
     return redirect(url_for('login'))
 
-# 📌 Handle Login
+# Handle Login
 @app.route('/login', methods=['POST'])
 def login_user():
     email = request.form['email']
@@ -54,7 +54,7 @@ def login_user():
         flash("Invalid Credentials!", "danger")
         return redirect(url_for('login'))
 
-# 📌 Home Page After Login
+# Home Page After Login
 @app.route('/home')
 def home():
     if 'user_id' not in session:
